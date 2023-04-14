@@ -1,0 +1,79 @@
+<html lang="en">
+  <head>
+    {{>headerlinks}}
+  </head>
+  <body>
+    {{>navbar}}
+    <!-- main header -->
+
+    <div class="container-fluid main_header">
+      <div class="row">
+        <div class="col-md-12 col-12 mx-auto">
+            <div class="main_content">
+              <form class="temp_form">
+                <input
+                  type="text"
+                  id="city_name"
+                  placeholder="Enter The Name Of Your City"
+                  autocomplete="off"
+                />
+                <input type="submit" value="search" id="submitbtn" />
+              </form>
+            </div>
+            <div class="tempInfo">
+              <div class="top_layer">
+                  <p id="today">Monday</p>
+                  <p id="today_date">13 Apr</p>
+              </div>
+              <div class="main_layer">
+            <p id="cityName">Get Output Here</p>
+            <div class="middle_layer data_hide">
+                 <p id="temp"><span id="tempval">0</span><sup>o</sup>c</p>
+                 <p id="temp_status"><i class="fa fa-cloud" aria-hidden="true"></i></p>
+            </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer code -->
+    {{>footer}}
+    <script src="js/main.js"></script>
+    <script>
+      const days=document.getElementById('today');
+      const date=document.getElementById('today_date');
+      const getCurrentDay=()=>{
+        let week=new Array(7);
+        week[0]="Sunday";
+        week[1]="Monday";
+        week[2]="Tuesday";
+        week[3]="Wednesday";
+        week[4]="Thursday";
+        week[5]="Friday";
+        week[6]="Saturday";
+        let curTime=new Date();
+        let day=week[curTime.getDay()];
+        days.innerText=day;
+        let month=curTime.getMonth();
+        let m=new Array(12);
+        m[0]="JAN";
+        m[1]="FEB";
+        m[2]="MAR";
+        m[3]="APR";
+        m[4]="MAY";
+        m[5]="JUN";
+        m[6]="JUL";
+        m[7]="AUG";
+        m[8]="SEPT";
+        m[9]="OCT";
+        m[10]="NOV";
+        m[11]="DEC";
+        let data=m[month];
+        date.innerHTML=`${curTime.getDate()} ${data}`;
+
+      }
+      getCurrentDay();
+    </script>
+  </body>
+</html>
